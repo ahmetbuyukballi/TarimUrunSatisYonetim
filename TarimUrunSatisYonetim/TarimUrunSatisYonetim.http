@@ -1,0 +1,6 @@
+@TarimUrunSatisYonetim_HostAddress = http://localhost:5258
+
+GET {{TarimUrunSatisYonetim_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
