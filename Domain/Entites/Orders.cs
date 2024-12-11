@@ -24,5 +24,6 @@ namespace Domain.Entites
         [ForeignKey("UserId")]
         public Guid UserId { get; set; }
         public AppUser AppUser { get; set; }
+
     }
 }
