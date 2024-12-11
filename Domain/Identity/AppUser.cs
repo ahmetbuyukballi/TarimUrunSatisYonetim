@@ -25,5 +25,7 @@ namespace Domain.Identity
         public ICollection<Comments> comments { get; set; }
         public ICollection<Orders> Guids { get; set; }
         public ICollection<Products> products { get; set; }
+        public ICollection<CardInformation> cardInformation { get; set; }
+
     }
 }
