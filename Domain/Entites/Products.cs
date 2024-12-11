@@ -17,25 +17,27 @@ namespace Domain.Entites
 
         public Details Details { get; set; }  // Navigation property to Details
 
-        public Guid MeasurementId { get; set; }
+        public int MeasurementId { get; set; }
         public Measurement Measurement { get; set; }
 
         public int Stock { get; set; }
 
         [Required]
-        public Guid CategoriesId { get; set; }
+        public int CategoriesId { get; set; }
         public Categories Categories { get; set; }
 
         [Required]
-        public Guid BrandId { get; set; }
+        public int BrandId { get; set; }
         public Brands Brand { get; set; }
 
         public ICollection<Comments> Comments { get; set; }
         public ICollection<Orders> Orders { get; set; }
 
         [Required]
-        public Guid UserId { get; set; }
+        public int UserId { get; set; }
         public AppUser AppUser { get; set; }
+        public Sales Sales { get; set; }
+
     }
 
 }

@@ -11,13 +11,15 @@ namespace Domain.Entites
 {
     public class Categories:EntityBase
     {
-        public Guid ParentId { get; set; }
-        public Guid ProirtyId { get; set; }
+        
+        public int ParentId { get; set; }
+        public int PriorityId { get; set; }
         public string Name { get; set; }
         public ICollection<Products> Products { get; set; }
         [Required]
         [ForeignKey("BrandsId")]
         public Guid BrandsId { get; set; }
         public ICollection<Brands> Brands { get; set; }
+
     }
 }

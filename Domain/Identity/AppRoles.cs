@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Identity
 {
-    public class AppRoles:IdentityRole<Guid>
+    public class AppRoles:IdentityRole<int>
     {
       public ICollection<AppUser> AppUsers { get; set; }
     }

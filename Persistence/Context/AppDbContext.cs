@@ -27,6 +27,12 @@ namespace Persistence.Context
         public DbSet<Orders> Orders { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<AppRoles> AppRoles { get; set; }
+        public DbSet<Sales> Sales { get; set; }
+        public DbSet<CardInformation> CardInformation { get; set; }
+        public DbSet<CargoInformation> CargoInformation { get; set; }
+        public DbSet<PictureProducts> PictureProducts { get; set; }
+        public DbSet<Transaction> Transaction { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
