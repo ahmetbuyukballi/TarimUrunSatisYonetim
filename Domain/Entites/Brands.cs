@@ -15,7 +15,7 @@ namespace Domain.Entites
         public ICollection<Products> products { get; set; }
         [Required]
         [ForeignKey("CategoriesId")]
-        public Guid CategoriesId { get; set; }
+        public int CategoriesId { get; set; }
         public ICollection<Categories> categories { get; set; }
     }
 }

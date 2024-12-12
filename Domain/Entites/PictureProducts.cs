@@ -9,7 +9,7 @@ namespace Domain.Entites
 {
     public class PictureProducts : EntityBase
     {
-        public Guid ProductId { get; set; }
+        public int ProductId { get; set; }
         public string PictureWay { get; set; }
         public Products Products { get; set; }
     }

@@ -16,7 +16,7 @@ namespace Domain.Entites
         public int Scoring { get; set; }
         [Required]
         [ForeignKey("UserId")]
-        public Guid UserId { get; set; }
+        public int UserId { get; set; }
         public AppUser AppUser { get; set; }
         public Products Products { get; set; }
     }

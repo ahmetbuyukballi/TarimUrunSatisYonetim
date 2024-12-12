@@ -13,11 +13,11 @@ namespace Domain.Entites
         public double Rate { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public Guid ProductsId { get; set; }
+        public int ProductsId { get; set; }
         public ICollection<Products> Products { get; set; }
-        public Guid CategoriesId { get; set; }
+        public int CategoriesId { get; set; }
         public ICollection<Categories> Categories { get; set; }
-        public Guid BrandsId { get; set; }
+        public int BrandsId { get; set; }
         public ICollection<Brands> Brands { get; set; }
 
 
