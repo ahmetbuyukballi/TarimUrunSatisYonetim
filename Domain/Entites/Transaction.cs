@@ -10,9 +10,9 @@ namespace Domain.Entites
 {
     public class Transaction : EntityBase
     {
-        public Guid UserId { get; set; }
+        public int UserId { get; set; }
         public AppUser AppUser { get; set; }
-        public Guid CartId { get; set; }
+        public int CartId { get; set; }
         public CardInformation CardInformation { get; set; }
         public double Amound { get; set; }
 

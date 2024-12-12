@@ -18,11 +18,11 @@ namespace Domain.Entites
         [Required]
         [ForeignKey("ProductId")]
 
-        public Guid ProductId { get; set; }
+        public int ProductId { get; set; }
         public ICollection<Products> products { get; set; }
         [Required]
         [ForeignKey("UserId")]
-        public Guid UserId { get; set; }
+        public int UserId { get; set; }
         public AppUser AppUser { get; set; }
 
     }

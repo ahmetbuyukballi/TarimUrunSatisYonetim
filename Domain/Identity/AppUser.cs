@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Identity
 {
-    public class AppUser :IdentityUser<Guid>
+    public class AppUser :IdentityUser<int>
     {
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -20,10 +20,10 @@ namespace Domain.Identity
         [Required]
         [ForeignKey("RolesId")]
 
-        public Guid RoleId { get; set; }
+        public int RoleId { get; set; }
         public AppRoles Role { get; set; }
         public ICollection<Comments> comments { get; set; }
-        public ICollection<Orders> Guids { get; set; }
+        public ICollection<Orders> Orders { get; set; }
         public ICollection<Products> products { get; set; }
         public ICollection<CardInformation> cardInformation { get; set; }
 
