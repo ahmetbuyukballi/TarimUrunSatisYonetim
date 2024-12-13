@@ -16,7 +16,6 @@ namespace Domain.Identity
         public string Surname { get; set; }
         public string HomeAdress { get; set; }
         public string Gender { get; set; }
-        public string roles { get; set; }
         [Required]
         [ForeignKey("RolesId")]
 
