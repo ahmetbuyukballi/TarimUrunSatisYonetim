@@ -33,11 +33,13 @@ namespace Persistence.Context
         public DbSet<CargoInformation> CargoInformation { get; set; }
         public DbSet<PictureProducts> PictureProducts { get; set; }
         public DbSet<Transaction> Transaction { get; set; }
+        public DbSet<OrderItems>  OrderItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
+       
     }
 }

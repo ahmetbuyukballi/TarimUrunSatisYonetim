@@ -11,5 +11,6 @@ namespace Application.Abraction
     {
         Task<ApiResponse> Register(RegisterDtos models);
         Task<ApiResponse> Login(LoginDtos models);
+        Task<ApiResponse> GetUser();
     }
 }

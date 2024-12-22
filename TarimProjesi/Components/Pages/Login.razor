@@ -1,0 +1,54 @@
+﻿@page "/login"
+
+<section class="login-section">
+    <div class="login-container">
+        <h2>Giriş Yap</h2>
+        <!-- Giriş Formu -->
+        <EditForm Model="@loginModel" OnValidSubmit="HandleLogin">
+            <div class="input-container">
+                <label for="username">E-posta veya Kullanıcı Adı</label>
+                <InputText id="username" class="login-input" @bind-Value="loginModel.Username" placeholder="E-posta veya kullanıcı adı" />
+            </div>
+            <div class="input-container">
+                <label for="password">Şifre</label>
+                <InputText id="password" type="password" class="login-input" @bind-Value="loginModel.Password" placeholder="Şifrenizi girin" />
+            </div>
+            <button type="submit" class="login-btn">Giriş Yap</button>
+            @if (!string.IsNullOrEmpty(ErrorMessage))
+            {
+                <p id="error-message" class="error-message">@ErrorMessage</p>
+            }
+        </EditForm>
+
+        <!-- Kayıt Olma Butonu -->
+        <div class="signup-link">
+            <p>Hesabınız yok mu? <a href="/register" class="signup-btn">Kayıt Ol</a></p>
+        </div>
+    </div>
+</section>
+
+@code {
+    private LoginModel loginModel = new LoginModel();
+    private string ErrorMessage;
+
+    private void HandleLogin()
+    {
+        if (loginModel.Username == "admin" && loginModel.Password == "12345")
+        {
+            // Başarılı giriş (yönlendirme veya başka bir işlem yapabilirsiniz)
+            ErrorMessage = string.Empty;
+            Console.WriteLine("Giriş başarılı!");
+        }
+        else
+        {
+            // Hatalı giriş
+            ErrorMessage = "E-posta veya şifre yanlış!";
+        }
+    }
+
+    public class LoginModel
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
+    }
+}

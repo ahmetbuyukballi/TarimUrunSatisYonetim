@@ -5,7 +5,7 @@
 namespace Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class mig2 : Migration
+    public partial class mig7 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,12 +15,8 @@ namespace Persistence.Migrations
                 table: "comments");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_OrdersProducts_Products_productsId",
-                table: "OrdersProducts");
-
-            migrationBuilder.DropColumn(
-                name: "roles",
-                table: "AspNetUsers");
+                name: "FK_Products_AspNetUsers_UserId",
+                table: "Products");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_comments_Products_ProductsId",
@@ -28,13 +24,13 @@ namespace Persistence.Migrations
                 column: "ProductsId",
                 principalTable: "Products",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.NoAction);
+                onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_OrdersProducts_Products_productsId",
-                table: "OrdersProducts",
-                column: "productsId",
-                principalTable: "Products",
+                name: "FK_Products_AspNetUsers_UserId",
+                table: "Products",
+                column: "UserId",
+                principalTable: "AspNetUsers",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.NoAction);
         }
@@ -47,15 +43,8 @@ namespace Persistence.Migrations
                 table: "comments");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_OrdersProducts_Products_productsId",
-                table: "OrdersProducts");
-
-            migrationBuilder.AddColumn<string>(
-                name: "roles",
-                table: "AspNetUsers",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
+                name: "FK_Products_AspNetUsers_UserId",
+                table: "Products");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_comments_Products_ProductsId",
@@ -65,10 +54,10 @@ namespace Persistence.Migrations
                 principalColumn: "Id");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_OrdersProducts_Products_productsId",
-                table: "OrdersProducts",
-                column: "productsId",
-                principalTable: "Products",
+                name: "FK_Products_AspNetUsers_UserId",
+                table: "Products",
+                column: "UserId",
+                principalTable: "AspNetUsers",
                 principalColumn: "Id");
         }
     }

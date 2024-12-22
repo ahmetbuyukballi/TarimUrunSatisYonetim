@@ -31,10 +31,9 @@ namespace Domain.Entites
         public Brands Brand { get; set; }
 
         public ICollection<Comments> Comments { get; set; }
-        public ICollection<Orders> Orders { get; set; }
-
-        [Required]
+       
         public int UserId { get; set; }
+        [ForeignKey("UserId")]
         public AppUser AppUser { get; set; }
 
     }

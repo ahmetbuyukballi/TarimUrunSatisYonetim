@@ -22,21 +22,6 @@ namespace Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("BrandsCategories", b =>
-                {
-                    b.Property<int>("BrandsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("categoriesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("BrandsId", "categoriesId");
-
-                    b.HasIndex("categoriesId");
-
-                    b.ToTable("BrandsCategories");
-                });
-
             modelBuilder.Entity("Domain.Entites.Brands", b =>
                 {
                     b.Property<int>("Id")
@@ -44,9 +29,6 @@ namespace Persistence.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CategoriesId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedTime")
                         .HasColumnType("datetime2");
@@ -76,9 +58,6 @@ namespace Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("AppUserId")
-                        .HasColumnType("int");
-
                     b.Property<string>("CVV")
                         .IsRequired()
                         .HasMaxLength(3)
@@ -103,8 +82,6 @@ namespace Persistence.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
 
                     b.ToTable("CardInformation");
                 });
@@ -135,9 +112,6 @@ namespace Persistence.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int>("OrdersId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("CargoInformation");
@@ -150,9 +124,6 @@ namespace Persistence.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("BrandsId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedTime")
                         .HasColumnType("datetime2");
@@ -277,6 +248,49 @@ namespace Persistence.Migrations
                     b.ToTable("Measurements");
                 });
 
+            modelBuilder.Entity("Domain.Entites.OrderItems", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Brand")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("OrderItems");
+                });
+
             modelBuilder.Entity("Domain.Entites.Orders", b =>
                 {
                     b.Property<int>("Id")
@@ -288,7 +302,7 @@ namespace Persistence.Migrations
                     b.Property<int>("AppUserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CargoInformationId")
+                    b.Property<int>("CargoInformationId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedTime")
@@ -300,13 +314,6 @@ namespace Persistence.Migrations
                     b.Property<string>("OrderStatus")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Product")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -359,9 +366,6 @@ namespace Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AppUserId")
-                        .HasColumnType("int");
-
                     b.Property<int>("BrandId")
                         .HasColumnType("int");
 
@@ -395,8 +399,6 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AppUserId");
-
                     b.HasIndex("BrandId");
 
                     b.HasIndex("CategoriesId");
@@ -404,6 +406,8 @@ namespace Persistence.Migrations
                     b.HasIndex("MeasurementId");
 
                     b.HasIndex("SalesId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Products");
                 });
@@ -416,10 +420,10 @@ namespace Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("BrandsId")
+                    b.Property<int?>("BrandsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CategoriesId")
+                    b.Property<int?>("CategoriesId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedTime")
@@ -435,7 +439,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProductsId")
+                    b.Property<int?>("ProductsId")
                         .HasColumnType("int");
 
                     b.Property<double>("Rate")
@@ -474,9 +478,6 @@ namespace Persistence.Migrations
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -709,48 +710,11 @@ namespace Persistence.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("OrdersProducts", b =>
-                {
-                    b.Property<int>("OrdersId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("productsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("OrdersId", "productsId");
-
-                    b.HasIndex("productsId");
-
-                    b.ToTable("OrdersProducts");
-                });
-
-            modelBuilder.Entity("BrandsCategories", b =>
-                {
-                    b.HasOne("Domain.Entites.Brands", null)
-                        .WithMany()
-                        .HasForeignKey("BrandsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Entites.Categories", null)
-                        .WithMany()
-                        .HasForeignKey("categoriesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Domain.Entites.Brands", b =>
                 {
                     b.HasOne("Domain.Entites.Sales", null)
                         .WithMany("Brands")
                         .HasForeignKey("SalesId");
-                });
-
-            modelBuilder.Entity("Domain.Entites.CardInformation", b =>
-                {
-                    b.HasOne("Domain.Identity.AppUser", null)
-                        .WithMany("cardInformation")
-                        .HasForeignKey("AppUserId");
                 });
 
             modelBuilder.Entity("Domain.Entites.Categories", b =>
@@ -771,7 +735,7 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.Entites.Products", "Products")
                         .WithMany("Comments")
                         .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("AppUser");
@@ -790,6 +754,25 @@ namespace Persistence.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("Domain.Entites.OrderItems", b =>
+                {
+                    b.HasOne("Domain.Entites.Orders", "Order")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entites.Products", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Domain.Entites.Orders", b =>
                 {
                     b.HasOne("Domain.Identity.AppUser", "AppUser")
@@ -798,11 +781,15 @@ namespace Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Entites.CargoInformation", null)
+                    b.HasOne("Domain.Entites.CargoInformation", "CargoInformation")
                         .WithMany("Orders")
-                        .HasForeignKey("CargoInformationId");
+                        .HasForeignKey("CargoInformationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("AppUser");
+
+                    b.Navigation("CargoInformation");
                 });
 
             modelBuilder.Entity("Domain.Entites.PictureProducts", b =>
@@ -818,12 +805,6 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entites.Products", b =>
                 {
-                    b.HasOne("Domain.Identity.AppUser", "AppUser")
-                        .WithMany("products")
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Domain.Entites.Brands", "Brand")
                         .WithMany("products")
                         .HasForeignKey("BrandId")
@@ -845,6 +826,12 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.Entites.Sales", null)
                         .WithMany("Products")
                         .HasForeignKey("SalesId");
+
+                    b.HasOne("Domain.Identity.AppUser", "AppUser")
+                        .WithMany("products")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("AppUser");
 
@@ -936,21 +923,6 @@ namespace Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("OrdersProducts", b =>
-                {
-                    b.HasOne("Domain.Entites.Orders", null)
-                        .WithMany()
-                        .HasForeignKey("OrdersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Entites.Products", null)
-                        .WithMany()
-                        .HasForeignKey("productsId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Domain.Entites.Brands", b =>
                 {
                     b.Navigation("products");
@@ -969,6 +941,11 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Entites.Measurement", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("Domain.Entites.Orders", b =>
+                {
+                    b.Navigation("OrderItems");
                 });
 
             modelBuilder.Entity("Domain.Entites.Products", b =>
@@ -996,8 +973,6 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Identity.AppUser", b =>
                 {
                     b.Navigation("Orders");
-
-                    b.Navigation("cardInformation");
 
                     b.Navigation("comments");
 

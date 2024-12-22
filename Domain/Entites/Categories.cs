@@ -15,10 +15,7 @@ namespace Domain.Entites
         public int ProirtyId { get; set; }
         public string Name { get; set; }
         public ICollection<Products> Products { get; set; }
-        [Required]
-        [ForeignKey("BrandsId")]
-        public int BrandsId { get; set; }
-        public ICollection<Brands> Brands { get; set; }
+       
 
     }
 }

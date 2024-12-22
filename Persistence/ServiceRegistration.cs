@@ -14,7 +14,7 @@ namespace Persistence
     {
         public static void AddPersistence(this IServiceCollection services,IConfiguration configuration)
         {
-            services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer("Server=192.168.1.104\\MSSQLSERVER_2022;Database=TarimDb;User Id=sa;Password=123456;TrustServerCertificate=True;"));
+            services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer("Server=AHMET\\MSSQLSERVER_2022;Database=TarimDb;User Id=sa;Password=123456;TrustServerCertificate=True;"));
         }
        
     }
