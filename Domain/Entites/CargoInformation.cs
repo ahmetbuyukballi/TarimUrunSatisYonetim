@@ -12,7 +12,6 @@ namespace Domain.Entites
         public string CargoCompany { get; set; }
         public string CargoName { get; set; }
         public string CargoDescription { get; set; }
-        public int OrdersId { get; set; }
         public ICollection<Orders> Orders { get; set; }
     }
 }

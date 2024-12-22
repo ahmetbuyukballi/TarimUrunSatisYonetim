@@ -1,0 +1,104 @@
+﻿/* Arka plan resmi ve sayfa düzeni */
+body {
+    background: url('../images/loginarkaplannn.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh; /* Sayfa yüksekliği kadar */
+    display: flex;
+    justify-content: center; /* Yatayda ortalar */
+    align-items: center; /* Dikeyde ortalar */
+}
+
+/* Giriş yap container */
+.login-section {
+    background-color: rgba(255, 255, 255, 0.8); /* Hafif beyaz arka plan */
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+    /* Başlık */
+    .login-section h2 {
+        font-size: 2.5rem;
+        color: #368f62;
+        margin-bottom: 2rem;
+    }
+
+/* Input alanları */
+.input-container {
+    margin-bottom: 1.5rem;
+}
+
+    .input-container label {
+        display: block;
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+        color: #333;
+    }
+
+    .input-container input {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.6rem;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+
+/* Giriş yap butonu */
+.login-btn {
+    width: 100%;
+    padding: 1.2rem;
+    background-color: #368f62;
+    color: white;
+    font-size: 1.8rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+    .login-btn:hover {
+        background-color: #2d7748;
+    }
+
+/* Kayıt Ol butonu */
+.signup-link {
+    margin-top: 1.5rem;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.signup-btn {
+    color: #368f62;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+    .signup-btn:hover {
+        text-decoration: underline;
+        color: #2d7748;
+    }
+
+/* Hata mesajı */
+.error-message {
+    color: red;
+    font-size: 1.4rem;
+    margin-top: 1rem;
+}
+
+/* Duyarlı Tasarım */
+@media (max-width: 600px) {
+    .login-section {
+        padding: 2rem;
+    }
+
+        .login-section h2 {
+            font-size: 2rem;
+        }
+
+    .login-btn {
+        font-size: 1.6rem;
+    }
+}

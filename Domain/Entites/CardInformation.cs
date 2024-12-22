@@ -1,4 +1,5 @@
 ﻿using Domain.Common;
+using Domain.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -22,5 +23,6 @@ namespace Domain.Entites
         [Required]
         [MaxLength(3)]
         public string CVV { get; set; }
+
     }
 }

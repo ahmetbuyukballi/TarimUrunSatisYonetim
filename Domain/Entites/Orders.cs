@@ -13,17 +13,15 @@ namespace Domain.Entites
     public class Orders:EntityBase
     {
         public string OrderStatus { get; set; }
-        public string Product { get; set; }
-
-        [Required]
-        [ForeignKey("ProductId")]
-
-        public int ProductId { get; set; }
-        public ICollection<Products> products { get; set; }
-        [Required]
+       
         [ForeignKey("UserId")]
         public int UserId { get; set; }
         public AppUser AppUser { get; set; }
+        public ICollection<OrderItems> OrderItems { get; set; } = new List<OrderItems>();
+
+        [ForeignKey("CargoInformationId")]
+        public int CargoInformationId { get; set; }
+        public CargoInformation CargoInformation { get; set; }
 
     }
 }

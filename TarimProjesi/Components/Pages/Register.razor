@@ -1,0 +1,64 @@
+﻿@page "/register"
+
+<section class="register">
+    <div class="register-container">
+        <!-- Ana Sayfaya Dönme Butonu -->
+        <a href="/" class="close-btn" style="float: right; text-decoration: none; font-size: 2rem; color: red;">&times;</a>
+        <h2>Kayıt Ol</h2>
+        <EditForm Model="@registerModel" OnValidSubmit="HandleRegister">
+            <div class="form-group">
+                <label for="name">Ad:</label>
+                <InputText id="name" class="form-input" @bind-Value="registerModel.Name" required />
+            </div>
+            <div class="form-group">
+                <label for="surname">Soyad:</label>
+                <InputText id="surname" class="form-input" @bind-Value="registerModel.Surname" required />
+            </div>
+            <div class="form-group">
+                <label for="address">Adres:</label>
+                <InputText id="address" class="form-input" @bind-Value="registerModel.Address" required />
+            </div>
+            <div class="form-group">
+                <label for="gender">Cinsiyet:</label>
+                <InputSelect id="gender" class="form-input" @bind-Value="registerModel.Gender">
+                    <option value="Erkek">Erkek</option>
+                    <option value="Kadın">Kadın</option>
+                </InputSelect>
+            </div>
+            <div class="form-group">
+                <label for="username">Kullanıcı Adı:</label>
+                <InputText id="username" class="form-input" @bind-Value="registerModel.Username" required />
+            </div>
+            <div class="form-group">
+                <label for="email">E-posta:</label>
+                <InputText id="email" type="email" class="form-input" @bind-Value="registerModel.Email" required />
+            </div>
+            <div class="form-group">
+                <label for="password">Şifre:</label>
+                <InputText id="password" type="password" class="form-input" @bind-Value="registerModel.Password" required />
+            </div>
+            <button type="submit" class="register-btn">Kayıt Ol</button>
+        </EditForm>
+    </div>
+</section>
+
+@code {
+    private RegisterModel registerModel = new RegisterModel();
+
+    private void HandleRegister()
+    {
+        // Kayıt işlemini gerçekleştirme (örneğin, veritabanına ekleme veya API çağrısı)
+        Console.WriteLine($"Kullanıcı Kaydedildi: {registerModel.Name} {registerModel.Surname}");
+    }
+
+    public class RegisterModel
+    {
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Address { get; set; }
+        public string Gender { get; set; }
+        public string Username { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+}

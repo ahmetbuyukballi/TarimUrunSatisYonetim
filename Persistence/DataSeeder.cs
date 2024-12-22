@@ -27,10 +27,14 @@ namespace Persistence
                     Surname = "Admin",
                     Email = "admin@example.com",
                     UserName = "admin@example.com",
+                    Gender = "NotSpecified",
+                    HomeAdress="kayseri",
+                    RoleId=21
+
 
                 };
             }
-            var result=await _userManager.CreateAsync(AdminUser,"admin123");
+            var result=await _userManager.CreateAsync(AdminUser,"Admin123");
             if (result.Succeeded)
             {
                 await _userManager.AddToRoleAsync(AdminUser, "Admin");

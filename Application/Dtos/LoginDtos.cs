@@ -8,7 +8,7 @@ namespace Application.Dtos
 {
     public class LoginDtos
     {
-        public string username { get; set; }
-        public string password { get; set; }
+        public string UsernameorEmail { get; set; }
+        public string Password { get; set; }
     }
 }

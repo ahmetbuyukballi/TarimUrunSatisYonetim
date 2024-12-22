@@ -13,9 +13,6 @@ namespace Domain.Entites
     {
         public string Name { get; set; }
         public ICollection<Products> products { get; set; }
-        [Required]
-        [ForeignKey("CategoriesId")]
-        public int CategoriesId { get; set; }
-        public ICollection<Categories> categories { get; set; }
+       
     }
 }

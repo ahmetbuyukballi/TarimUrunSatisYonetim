@@ -18,13 +18,12 @@ namespace Domain.Identity
         public string Gender { get; set; }
         [Required]
         [ForeignKey("RolesId")]
-
         public int RoleId { get; set; }
         public AppRoles Role { get; set; }
         public ICollection<Comments> comments { get; set; }
         public ICollection<Orders> Orders { get; set; }
         public ICollection<Products> products { get; set; }
-        public ICollection<CardInformation> cardInformation { get; set; }
+
 
     }
 }

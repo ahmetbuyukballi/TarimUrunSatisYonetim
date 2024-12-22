@@ -10,7 +10,7 @@ namespace Domain.Entites
 {
     public class Transaction : EntityBase
     {
-        public int UserId { get; set; }
+        
         public AppUser AppUser { get; set; }
         public int CartId { get; set; }
         public CardInformation CardInformation { get; set; }
