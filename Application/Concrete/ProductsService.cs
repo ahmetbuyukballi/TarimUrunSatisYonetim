@@ -19,6 +19,7 @@ namespace Application.Concrete
             _appDbContext = appDbContext;
             _apiResponse = apiResponse;
         }
+        
         public async Task<ApiResponse> CreateProducts(CreateProductsdTOS models)
         {
             if (models != null)
@@ -31,7 +32,7 @@ namespace Application.Concrete
                     Stock = models.Stock,
                     CategoriesId = models.CategoriesId,
                     BrandId = models.BrandId,
-                    UserId=15577
+                    UserId=15592
                 };
                 await _appDbContext.Products.AddAsync(products);
                 if(await _appDbContext.SaveChangesAsync() > 0) 
@@ -65,8 +66,10 @@ namespace Application.Concrete
             }
              _appDbContext.Products.Remove(products);
             if (_appDbContext.SaveChanges() > 0) 
-            { 
-               
+            {
+                _apiResponse.IsSuccess = true;
+                _apiResponse.StatusCode = System.Net.HttpStatusCode.OK;
+                return _apiResponse;
             }
 
             _apiResponse.IsSuccess = false;
@@ -122,9 +125,10 @@ namespace Application.Concrete
                     Stock = models.Stock,
                     CategoriesId = models.CategoriesId,
                     BrandId = models.BrandId,
-                    UserId= 15577
+                    UserId= 15592
 
                 };
+                _appDbContext.Products.Update(products);
                 if (_appDbContext.SaveChanges() > 0)
                 {
                     _apiResponse.IsSuccess = true;
