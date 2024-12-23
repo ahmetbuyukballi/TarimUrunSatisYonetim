@@ -38,7 +38,6 @@ builder.Services.AddLogging();
 builder.Services.AddHttpClient();
 builder.Services.AddAuthorization();
 builder.Services.AddSwaggerCollection(builder.Configuration);
-builder.Services.AddScoped<DataSeeder>();
 builder.Services.AddScoped<IUserService,UserService>();
 builder.Services.AddScoped<IProductsService,ProductsService>();
 builder.Services.AddScoped<IOrderService,OrdersService>();
@@ -47,6 +46,10 @@ builder.Services.AddScoped<ICommentsService, CommentsService>();
 builder.Services.AddScoped<ICardService, CardService>();
 builder.Services.AddScoped<ICategoryServices,CategoryServices>();
 builder.Services.AddScoped<IBrandService,BrandService>();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminPolicy", policy => policy.RequireRole("admin"));
+});
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("FrontendPolicy", builder =>
@@ -75,11 +78,5 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
-// DataSeeder'ý çalýþtýrmak için veritabaný baðlantýsýnýn oluþturulmasýnýn ardýndan Seed iþlemini tetikleyin
-using (var scope = app.Services.CreateScope())
-{
-    var seeder = scope.ServiceProvider.GetRequiredService<DataSeeder>();
-    await seeder.SeedAsync();  // await'i kullanýrken doðru baðlamda olunmalý
-}
 
 app.Run();

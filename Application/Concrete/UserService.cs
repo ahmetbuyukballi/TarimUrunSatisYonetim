@@ -96,7 +96,7 @@ namespace Application.Concrete
                     {
                         throw new Exception("Kullanıcı ID null veya geçersiz!");
                     }
-
+                
                     if (!string.IsNullOrEmpty(appUser.UserName))
                     {
                         claims.Add(new Claim(ClaimTypes.Name, appUser.UserName));
@@ -123,6 +123,7 @@ namespace Application.Concrete
                             new Claim(ClaimTypes.NameIdentifier,appUser.Id.ToString()),
                             new Claim(ClaimTypes.Email,appUser.Email),
                             new Claim("Name",appUser.Name),
+                            new Claim("UserName",appUser.UserName),
                         }),
                         Expires = DateTime.UtcNow.AddDays(1),
                         SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)
