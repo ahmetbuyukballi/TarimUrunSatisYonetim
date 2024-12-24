@@ -117,17 +117,13 @@ namespace Application.Concrete
             var products=await _appDbContext.Products.FirstOrDefaultAsync(x=>x.Id == id);
             if (products != null) 
             {
-                products = new()
-                {
-                    Name = models.Name,
-                    Price = models.Price,
-                    MeasurementId = models.MeasurementId,
-                    Stock = models.Stock,
-                    CategoriesId = models.CategoriesId,
-                    BrandId = models.BrandId,
-                    UserId= 15592
-
-                };
+                products.Name = models.Name;
+                products.Price = models.Price;
+                products.MeasurementId = models.MeasurementId;
+                products.Stock = models.Stock;
+                products.CategoriesId = models.CategoriesId;
+                products.BrandId = models.BrandId;
+                products.UserId = 15592;
                 _appDbContext.Products.Update(products);
                 if (_appDbContext.SaveChanges() > 0)
                 {
